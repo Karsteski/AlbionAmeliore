@@ -1,5 +1,6 @@
 import json 
 from typing import Any
+from fuzzysearch import find_near_matches
 
 from items import Item
 
@@ -41,3 +42,18 @@ def stringsToItems(item_strings : dict[str,str]) -> list[Item]:
 
     return items
 
+def findNearestItemNames(
+        items: list[Item],
+        string_to_match: str,
+        max_num_of_names: int = 5) -> set[str]:
+    matches = set()
+    
+    MAX_DISTANCE = 2
+    for item in items:
+        near_matches = find_near_matches(string_to_match,
+                            item.name, max_l_dist=MAX_DISTANCE)
+    
+        if near_matches:
+            matches.add(item.name)
+
+    return matches

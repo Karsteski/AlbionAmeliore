@@ -37,11 +37,11 @@ class MarketData:
     item: Item
     city: City
 
-    min_sell_price_datetime: datetime.datetime
-    max_sell_price_datetime: datetime.datetime
+    min_sell_price_datetime: datetime.datetime = datetime.datetime.now()
+    max_sell_price_datetime: datetime.datetime = datetime.datetime.now()
 
-    min_buy_price_datetime: datetime.datetime
-    max_buy_price_datetime: datetime.datetime
+    min_buy_price_datetime: datetime.datetime = datetime.datetime.now()
+    max_buy_price_datetime: datetime.datetime = datetime.datetime.now()
 
     min_sell_price: int = 0
     max_sell_price: int = 0
