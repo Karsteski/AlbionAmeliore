@@ -2,16 +2,12 @@
 
 from PySide6.QtWidgets import QApplication
 
-from PySide6.QtCore import QFile, QIODeviceBase
-from PySide6.QtWidgets import QMainWindow
-from PySide6.QtUiTools import QUiLoader
-
 from typing import Any
-import sys
+
+from ui.main_window import MainWindow
 
 import file_data
 import api_data
-import ui.main_window
 
 from items import *
 
@@ -39,16 +35,7 @@ for thingy in found_thingies:
 application = QApplication([])
 
 
-qUiLoader = QUiLoader()
-
-path = ""
-file = QFile("/home/karsteski/dev/albionameliore/src/ui/ui_files/albionameliore.ui")
-file.open(QIODeviceBase.OpenModeFlag.ReadOnly)
-
-albion_ameliore = qUiLoader.load(file, None)
-albion_ameliore.show()
-
-# main_window = ui.main_window.MainWindow()
-# main_window.show()
+main_window = MainWindow()
+main_window.show()
 
 application.exec()
