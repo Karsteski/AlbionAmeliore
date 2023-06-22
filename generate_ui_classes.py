@@ -1,6 +1,6 @@
 #!/bin/python
 
-import os, sys, subprocess
+import os, subprocess
 
 UI_FILE_DIR = "src/ui/ui_files/"
 OUTPUT_DIR = "src/ui/ui_classes/"
@@ -17,13 +17,9 @@ def run_command(command: str, filenames: list[str], input_dir: str, output_dir: 
         with open(output_file, "w") as file:
                 input_file = input_dir + filename
                 full_command = command + " " + input_file
-                print("full command = ", full_command)
-                print("output= ", output_file)
-
                 subprocess.call(full_command, stdout=file, shell=True)
 
 if __name__ == "__main__":
     filenames = get_filenames(UI_FILE_DIR)
 
     run_command("pyside6-uic", filenames, UI_FILE_DIR, OUTPUT_DIR)
-
