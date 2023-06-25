@@ -57,9 +57,9 @@ def marketResponsetoMarketData(response: list[dict[str, Any]]) \
     market_data : list[MarketData] = []
     
     for market_response_data in response:
-        # should be wrapped in try-except
+        # TODO: should be wrapped in try-except
         item_data = MarketData(
-            item = Item(name = "", 
+            item = Item(name = market_response_data["item_id"],
                         uid = market_response_data["item_id"],
                         quality= Quality(market_response_data["quality"])
             ),
